@@ -43,6 +43,7 @@ RUN apk add --no-cache 'su-exec>=0.2'
 COPY build_openssh.sh /build_openssh.sh 
 RUN set -ex; \
 	\
+	chmod +x /build_openssh.sh; \
  apk add --no-cache --virtual .build-deps \
 		coreutils \
 		gcc \
@@ -58,7 +59,6 @@ RUN set -ex; \
 	apk add --no-cache --virtual .run-deps \
 		libcrypto1.0 \
 	; \
-	chmod +x /build_openssh.sh; \
   /build_openssh.sh; \
 	apk del .build-deps; \
 	rm -f /build_openssh.sh;
