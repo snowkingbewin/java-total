@@ -41,7 +41,6 @@ RUN apk add --no-cache 'su-exec>=0.2'
 
 #install openssh
 COPY build_openssh.sh /build_openssh.sh 
-RUN 
 RUN chmod +x /build_openssh.sh;
 set -ex; \
 	\
