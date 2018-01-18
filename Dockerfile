@@ -34,5 +34,8 @@ RUN set -ex; \
 	openjdk8-jre="$JAVA_ALPINE_VERSION"; \
 	sed -i -e 's/edge/v3\.6/g' /etc/apk/repositories; \
 	adduser -u 18345 -D cmp;
+	
+RUN apk add --no-cache fontconfig ttf-dejavu
+RUN apk add --no-cache 'su-exec>=0.2'
 
 WORKDIR /home/cmp
