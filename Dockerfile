@@ -34,8 +34,34 @@ RUN set -ex; \
 	openjdk8-jre="$JAVA_ALPINE_VERSION"; \
 	sed -i -e 's/edge/v3\.6/g' /etc/apk/repositories; \
 	adduser -u 18345 -D cmp;
-	
+
+#install su&font
 RUN apk add --no-cache fontconfig ttf-dejavu
 RUN apk add --no-cache 'su-exec>=0.2'
+
+#install openssh
+COPY build_openssh.sh /build_openssh.sh 
+RUN chmod +x /build_openssh.sh
+
+RUN set -ex; \
+	\
+ apk add --no-cache --virtual .build-deps \
+		coreutils \
+		gcc \
+		curl \
+		linux-headers \
+		make \
+		musl-dev \
+		zlib \
+		zlib-dev \
+		openssl \
+		openssl-dev \
+	; \
+	apk add --no-cache --virtual .run-deps \
+		libcrypto1.0 \
+	; \
+  /build_openssh.sh; \
+	apk del .build-deps; \
+	rm -f /build_openssh.sh;
 
 WORKDIR /home/cmp
