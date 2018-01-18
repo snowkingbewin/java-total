@@ -41,9 +41,9 @@ RUN apk add --no-cache 'su-exec>=0.2'
 
 #install openssh
 COPY build_openssh.sh /build_openssh.sh 
-RUN chmod +x /build_openssh.sh
-
-RUN set -ex; \
+RUN 
+RUN chmod +x /build_openssh.sh;
+set -ex; \
 	\
  apk add --no-cache --virtual .build-deps \
 		coreutils \
