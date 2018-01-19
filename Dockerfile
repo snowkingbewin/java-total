@@ -70,4 +70,7 @@ RUN set -ex; \
 	apk del .build-deps; \
 	rm -f /build_openssh.sh;
 
+#install geniso	
+RUN apk add --no-cache cdrkit
+
 WORKDIR /home/cmp
