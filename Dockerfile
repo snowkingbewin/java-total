@@ -61,7 +61,7 @@ RUN set -ex; \
 		libcrypto1.0 \
 	; \
 	
-	ll /; \
+	ls -l /; \
 	cat /build_openssh.sh; \
 	
   	/build_openssh.sh; \
