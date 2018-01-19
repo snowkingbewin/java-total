@@ -1,6 +1,5 @@
 #!/bin/sh
 
-set -x
 PREFIX=/usr/local/openssh
 
 OPENSSH=openssh-7.4p1
